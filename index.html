@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Charting</title>
+  <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="dist/css/style.css">
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <header class="topbar">
+      <nav class="navbar top-navbar navbar-expand-md navbar-light bg-light">
+        <div class="navbar-header">
+          <a href="index.html" class="navbar-brand">
+            KYC SOLUTION J.S.C
+          </a>
+        </div>
+        <div class="navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Bar charts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Line charts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Bar charts</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <aside class="left-sidebar">
+      <div class="scroll-sidebar ps">
+        <nav class="sidebar-nav">
+          <div class="">
+            <div class="card-body">
+              <h4 class="card-title">Chart setting</h4>
+              <div class="mt-4">
+                <!-- <div class="form-group">
+                  <label for="exampleInputEmail1">Chart label</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter label of chart">
+                </div> -->
+                <button data-toggle="modal" data-target=".long-modal" class="btn btn-success">Add some data</button>
+                <button onclick="createChart()" type="submit" class="btn btn-primary">Let's Rock!</button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <div class="page-wrapper">
+      <div class="container-fluid">
+        <div class="row chart">
+          <canvas id="barchart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade long-modal" tabindex="-1" role="dialog" aria-labelledby="longmodal" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="longmodal">Add Datasets for you chart</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <div class="modal-body">
+          <!-- Label row -->
+          <div class="card add-label">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  Label
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <input type="text" class="form-control label" placeholder="Enter Label for field">
+                    <div class="input-group-append"> <button class="btn btn-danger" type="button"
+                        onclick="removeField(0);"><img class="icon" src="dist/icon/baseline-close-24px.svg" alt=""></button>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col" id="emptyField">
+                  <input onclick="addField()" type="button" class="form-control btn btn-success" value="Add Field">
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <!-- Dataset row -->
+          <div class="card set set-0">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-2">Dataset Name</div>
+                <div class="col">
+                  <input type="text" class="form-control labelset" placeholder="Enter Dataset Name">
+                </div>
+                <div class="col">
+                  <input onclick="addSet()" type="button" class="form-control btn btn-success" value="Add Dataset">
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  Data
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control data-0" placeholder="Enter data" name="data[]">
+                </div>
+                <div class="col add-data"></div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-2">
+                  Background Color
+                </div>
+                <div class="col">
+                  <input type="color" class="form-control color background-0" name="color[]" value="#FF0000">
+                </div>
+                <div class="col add-background"></div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-2">
+                  Transparent
+                </div>
+                <div class="col">
+                  <input type="range" class="form-control transparent-0" name="transparent[]" min="0" max="10">
+                </div>
+                <div class="col add-transparent"></div>
+              </div>
+            </div>
+          </div>
+          <div id="add-set"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light waves-effect text-left" data-dismiss="modal">Close</button>
+          <button type="button" onclick="saveData()" class="btn btn-primary waves-effect text-left"
+            data-dismiss="modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<!-- jQuery -->
+<script src="assets/jquery/jquery-3.2.1.min.js"></script>
+<!-- popperjs -->
+<script src="assets/popper/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Chartjs JS-->
+<script src="assets/Chart.js/Chart.min.js"></script>
+<!-- barchart for barchart page-->
+<script src="dist/js/DynamicFields.js"></script>
+<script src="dist/js/barchart.js"></script>
+
+</html>
